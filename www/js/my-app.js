@@ -42,24 +42,11 @@ $$(document).on('pageInit', '.page[data-page="about"]', function (e) {
     myApp.alert('Here comes About page');
 })
 
-// function NewsAPI(){
-//     var url = 'https://newsapi.org/v2/top-headlines?' +
-//     'sources=bbc-news&' +
-//     'apiKey=341a2ec7b1f44a2da32508bca18f7f57';
-// var req = new Request(url);
-// fetch(req)
-// .then(function(response) {
-//   console.log(response.json());
-// })
-
-
-// }
 
 
 function NewsAPI(){
     var http = new XMLHttpRequest();
     var url = "https://newsapi.org/v2/top-headlines?sources=cnn&apiKey=341a2ec7b1f44a2da32508bca18f7f57";
-    //var req = new Request(url);
 
     
     http.open('GET', url);
@@ -72,50 +59,18 @@ function NewsAPI(){
 
              
             var content = "<table>";
-            // var newsList = responseJSON;
-             for (var i = 0; i <responseJSON.articles.length; i++){
+        
+        for (var i = 0; i <responseJSON.articles.length; i++){
                 content+= "<tr>";
-                content += "<td>" + responseJSON.articles[i].title + "</td>";
-                content += "<td>" + responseJSON.articles[i].content + "</td>";
-                content += '<td><img width="200" height="80" src="' + responseJSON.articles[i].urlToImage + '"></img></td>';
+                content += "<td>" + responseJSON.articles[i].source.name + "</td>";
+                content += "<th>" + responseJSON.articles[i].title + "</th>";
+                content += "<td>" + responseJSON.articles[i].description + "</td>";
                 content+= "</tr>";
-            
-                
+                content += "<td>" + responseJSON.articles[i].publishedAt + "</td>";
+                content += '<th><img width="200" height="100" src="' + responseJSON.articles[i].urlToImage + '"></img></th>';
+                content += "<td>" + responseJSON.articles[i].content + "</td>";
                 
             }
             content+= "</table>";
             document.getElementById('newsResults').innerHTML = content;
              
-             //  var newsList1 = responseJSON.articles[0].title;
-            //  document.getElementById('Author').innerHTML = newsList1;
-
-            //  var newsList = responseJSON.articles[0].description;
-            //  document.getElementById('description').innerHTML = newsList;
-
-
-            // var content = '<table>';
-            // var responseJSON =
-            // for (var i = 0; i <10; i ++){
-            //     content = content +"<tr><td>";
-            //     content+= responseJSON.articules[i].content;
-            //     content+= "</td><td>"+
-            //     responseJSON.articules[i].content;
-            //     +"</td></tr>";
-
-            //     content += "</table>";
-            //     document.getElementById.innerHTML = content;
-            // }
-    }
-
-    
-}
-
-                // responseJSON.articles[i].title + "</td><td>";
-                // responseJSON.articles[i].title + "</td><td>";
-                // responseJSON.articles[i].title + "</td><td>";
-                // responseJSON.articles[i].title + "</td><td>";
-                // responseJSON.articles[i].title + "</td><td>";
-                // responseJSON.articles[i].title + "</td><td>";
-                // responseJSON.articles[i].title + "</td><td>";
-                // responseJSON.articles[i].title + "</td><td>";
-                // responseJSON.articles[i].title + "</td><tr>";
